@@ -9,6 +9,7 @@ const loadData = async (loadAll) => {
 
 const displayTools = (tools, loadAll) => {
   const toolsDiv = document.getElementById("data_container");
+  toogleSpinner(true);
   loadALlButton(false);
   toolsDiv.innerHTML = "";
   const loadAllBtn = document.getElementById("load_all");
@@ -57,10 +58,18 @@ const displayTools = (tools, loadAll) => {
           </div>`;
     // toolsDiv.innerHTML += div.outerHTML;
   });
+  toogleSpinner(false);
   loadALlButton(true);
 };
 
-
+const toogleSpinner = (show) => {
+  const spinner = document.getElementById("spinner");
+  if (show) {
+    spinner.classList.remove("hidden");
+  } else {
+    spinner.classList.add("hidden");
+  }
+};
 
 const loadALlButton = (show) => {
   const loadAllBtn = document.getElementById("load_all");
