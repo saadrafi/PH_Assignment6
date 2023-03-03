@@ -1,16 +1,23 @@
-const loadData = async () => {
+const loadData = async (loadAll) => {
   const URL = "https://openapi.programming-hero.com/api/ai/tools";
   fetch(URL)
     .then((response) => response.json())
     .then((data) => {
-      displayTools(data.data.tools);
+      displayTools(data.data.tools, loadAll);
     });
 };
 
-const displayTools = (tools) => {
+const displayTools = (tools, loadAll) => {
   const toolsDiv = document.getElementById("data_container");
+  loadALlButton(false);
   toolsDiv.innerHTML = "";
- 
+  const loadAllBtn = document.getElementById("load_all");
+  if (loadAll == false) {
+    tools = tools.slice(0, 6);
+    loadAllBtn.innerText = "SEE MORE";
+  } else {
+    loadAllBtn.innerText = "SEE LESS";
+  }
   tools.forEach((tool) => {
     toolsDiv.innerHTML += `
     <div class="card w-full mx-auto bg-base-100 border border-[#1111111A] h-full flex flex-col rounded-xl shadow-lg">
@@ -42,9 +49,7 @@ const displayTools = (tools) => {
                   </p>
                 </div>
                 <div>
-                  <label for="modal-data"  onclick="loadDataDetails('${
-                    tool.id
-                  }')" class="bg-[#FEF7F7] cursor-pointer h-12 w-12 rounded-[50%]"><span class="material-symbols-outlined" style="color: #EB5757;"> arrow_forward </span></label>
+                  <label class="bg-[#FEF7F7] cursor-pointer h-12 w-12 rounded-[50%]"><span class="material-symbols-outlined" style="color: #EB5757;"> arrow_forward </span></label>
                 </div>
               </div>
             </div>
@@ -52,11 +57,21 @@ const displayTools = (tools) => {
           </div>`;
     // toolsDiv.innerHTML += div.outerHTML;
   });
-  
+  loadALlButton(true);
 };
 
 
 
+const loadALlButton = (show) => {
+  const loadAllBtn = document.getElementById("load_all");
+  if (show) {
+    loadAllBtn.classList.remove("hidden");
+  } else {
+    loadAllBtn.classList.add("hidden");
+  }
+};
 
-
-
+document.getElementById("load_all").addEventListener("click", (e) => {
+  const text = e.target.innerText;
+  loadData(text == "SEE MORE" ? true : false);
+});
