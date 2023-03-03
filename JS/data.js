@@ -50,7 +50,9 @@ const displayTools = (tools, loadAll) => {
                   </p>
                 </div>
                 <div>
-                  <label class="bg-[#FEF7F7] cursor-pointer h-12 w-12 rounded-[50%]"><span class="material-symbols-outlined" style="color: #EB5757;"> arrow_forward </span></label>
+                  <label for="modal-data"  onclick="loadDataDetails('${
+                    tool.id
+                  }')" class="bg-[#FEF7F7] cursor-pointer h-12 w-12 rounded-[50%]"><span class="material-symbols-outlined" style="color: #EB5757;"> arrow_forward </span></label>
                 </div>
               </div>
             </div>

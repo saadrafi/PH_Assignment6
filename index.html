@@ -18,13 +18,12 @@
 
     <title>PH Assignment 6</title>
   </head>
-  <body>
+  <body onload="loadData(false)">
     <header class="mt-5">
       <h1 class="text-5xl text-center font-semibold font-['Work Sans']">AI Universe Hub</h1>
     </header>
 
     <main class="w-[98%] mx-auto mt-10 mb-20">
-      <!-- Spinner Start -->
       <div class="text-center h-96 flex items-center justify-center flex-col" id="spinner">
         <div role="status">
           <svg
@@ -46,7 +45,7 @@
           <span class="sr-only">Loading...</span>
         </div>
       </div>
-      <!-- Spinner End -->
+      <!-- Spinned End -->
       <!-- DATA Container Start -->
       <section
         id="data_container"
@@ -64,8 +63,24 @@
         </button>
       </div>
       <!-- See All Button End -->
-    </main>
 
+      <!-- Modal Start -->
+
+      <section>
+        <input type="checkbox" id="modal-data" class="modal-toggle" />
+        <div class="modal">
+          <label
+            for="modal-data"
+            class="btn btn-sm btn-circle absolute right-2 top-0 lg:hidden md:hidden"
+            >✕</label
+          >
+
+          <div id="data_details" class="modal-box w-11/12 max-w-5xl relative"></div>
+        </div>
+      </section>
+      <!-- Modal End -->
+    </main>
+    <script src="JS/dataDetails.js"></script>
     <script src="JS/data.js"></script>
   </body>
 </html>
