@@ -30,11 +30,11 @@ const displayTools = (tools, loadAll, isSorted) => {
 
     toolsDiv.innerHTML += `
     <div class="card w-full mx-auto bg-base-100 border border-[#1111111A] h-full flex flex-col rounded-xl shadow-lg">
-    <figure class="px-10 pt-10 h-52">
+    <figure class="px-10 pt-10 h-56">
             <img
               src="${tool.image}"
               alt="Shoes"
-              class="rounded-xl"
+              class="rounded-xl h-contain w-full"
               
             />
           </figure>
