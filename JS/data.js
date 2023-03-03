@@ -1,13 +1,13 @@
-const loadData = async (loadAll) => {
+const loadData = async (loadAll, isSorted) => {
   const URL = "https://openapi.programming-hero.com/api/ai/tools";
   fetch(URL)
     .then((response) => response.json())
     .then((data) => {
-      displayTools(data.data.tools, loadAll);
+      displayTools(data.data.tools, loadAll, isSorted);
     });
 };
 
-const displayTools = (tools, loadAll) => {
+const displayTools = (tools, loadAll, isSorted) => {
   const toolsDiv = document.getElementById("data_container");
   toogleSpinner(true);
   loadALlButton(false);
@@ -15,11 +15,19 @@ const displayTools = (tools, loadAll) => {
   const loadAllBtn = document.getElementById("load_all");
   if (loadAll == false) {
     tools = tools.slice(0, 6);
+    if (isSorted) {
+      tools.sort((a, b) => new Date(a.published_in) - new Date(b.published_in));
+    }
     loadAllBtn.innerText = "SEE MORE";
   } else {
+    if (isSorted) {
+      tools.sort((a, b) => new Date(a.published_in) - new Date(b.published_in));
+      console.log(tools);
+    }
     loadAllBtn.innerText = "SEE LESS";
   }
   tools.forEach((tool) => {
+
     toolsDiv.innerHTML += `
     <div class="card w-full mx-auto bg-base-100 border border-[#1111111A] h-full flex flex-col rounded-xl shadow-lg">
     <figure class="px-10 pt-10 h-52">
@@ -86,3 +94,17 @@ document.getElementById("load_all").addEventListener("click", (e) => {
   const text = e.target.innerText;
   loadData(text == "SEE MORE" ? true : false);
 });
+
+document.getElementById("sort_by_date").addEventListener("click", () => {
+  const loadAllBtn = document.getElementById("load_all");
+  const text = loadAllBtn.innerText;
+  if (text == "SEE MORE") {
+    loadData(false, true);
+  } else {
+    loadData(true, true);
+  }
+});
+
+// document.getElementById("sort").addEventListener("click", (e) => {
+//   loadData(false, true);sort_by_date
+// });
