@@ -27,7 +27,14 @@ const displayDataDetails = (data) => {
 
         <div class="text-[#03A30A] font-semibold flex-1 card bg-base-100 shadow-xl flex flex-col justify-center items-center justify- 
                 items-center p-5">
-           <span class="text-sm ">${data.pricing[0].price}</span>
+           <span class="text-sm ">${
+             data.pricing[0].price.split("m").shift()
+               ? data.pricing[0].price.split("m").shift()
+               : data.pricing[0]
+           }</span>
+           <span class="text-sm ">${
+             data.pricing[0].price.split("/")[1] ? data.pricing[0].price.split("/")[1] : "month"
+           }</span>
            <span class="text-sm ">${data.pricing[0].plan}</span>
         </div>
       
@@ -36,8 +43,15 @@ const displayDataDetails = (data) => {
       
       <div class="text-[#F28927] font-semibold flex-1 card bg-base-100 shadow-xl flex flex-col  justify-items-center justify-center 
        items-center p-5">
-          <span class="text-sm">${data.pricing[1].price}</span>
-          <span class="text-sm">${data.pricing[1].plan}</span>
+          <span class="text-sm ">${
+            data.pricing[1].price.split("m").shift()
+              ? data.pricing[1].price.split("m").shift()
+              : data.pricing[1]
+          }</span>
+           <span class="text-sm ">${
+             data.pricing[1].price.split("/")[1] ? data.pricing[1].price.split("/")[1] : "month"
+           }</span>
+           <span class="text-sm ">${data.pricing[1].plan}</span>
         </div>
           
       <div class="text-[#EB5757] font-semibold flex-1 card bg-base-100 shadow-xl flex flex-col  justify-items-center justify-center 
