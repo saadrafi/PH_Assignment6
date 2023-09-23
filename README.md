@@ -1,9 +1,20 @@
 # AI-universe-hub
 
-### Private Repo Link
-Click Here to create [private repo](https://classroom.github.com/a/dhefyS56)
+### Live link:
+https://poetic-gumdrop-c32c3b.netlify.app/
 
-Private Repo link: [https://classroom.github.com/a/dhefyS56](https://classroom.github.com/a/dhefyS56)
+### Features:
+- A single page web app.
+- A user can see all the AI tools.
+- A user can see the details of a single AI tool.
+
+### Technologies Used:
+- HTML
+- CSS
+- TailwindCSS
+- REST API
+
+
 
 
 ## API Links
